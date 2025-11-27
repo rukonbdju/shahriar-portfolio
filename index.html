@@ -13,10 +13,6 @@
         /* Base styles */
         body {
             font-family: 'Inter', sans-serif;
-            background-color: #F9FAFB;
-            /* Tailwind gray-50 equivalent */
-            color: #1F2937;
-            /* Tailwind gray-800 equivalent for text-dark */
             scroll-behavior: smooth;
         }
 
@@ -28,7 +24,9 @@
             /* Teal 50 */
         }
 
-        /* Animation Styles */
+        /* --- Custom Animations & Effects --- */
+
+        /* Fade-in animation for sections */
         .fade-in-up {
             opacity: 0;
             transform: translateY(20px);
@@ -40,73 +38,51 @@
             transform: translateY(0);
         }
 
-        .timeline-dot {
-            transition: transform 0.3s ease-in-out;
-            box-shadow: 0 0 0 3px #F9FAFB;
-        }
-
-        .timeline-dot:hover {
-            transform: scale(1.2);
-            box-shadow: 0 0 0 4px #F9FAFB, 0 0 0 8px rgba(13, 148, 136, 0.1);
-        }
-
         /* Sticky Header for Navigation */
         #navbar {
             backdrop-filter: blur(10px);
-            background-color: rgba(255, 255, 255, 0.9);
+            background-color: rgba(255, 255, 255, 0.95);
             box-shadow: 0 1px 3px rgba(0, 0, 0, 0.08);
             z-index: 100;
         }
 
-        /* Timeline specific styles for mobile/desktop split */
-        .timeline-container {
-            position: relative;
-            /* Ensures overflow hidden works correctly for absolute positioning */
+        /* Custom Card Hover Effect */
+        .hover-card {
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+            /* Standard Tailwind ease-in-out */
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.08);
         }
 
-        .timeline-line-vertical {
-            position: absolute;
-            height: 100%;
-            border-left: 2px solid var(--color-light-bg);
-            /* Centered on desktop, left-aligned on mobile */
-            left: 12px;
-            /* Mobile position */
-        }
-
-        /* Desktop/Tablet: Center the line */
-        @media (min-width: 768px) {
-            .timeline-line-vertical {
-                left: 50%;
-                transform: translateX(-1px);
-            }
+        .hover-card:hover {
+            box-shadow: 0 15px 25px rgba(13, 148, 136, 0.15), 0 4px 6px rgba(0, 0, 0, 0.05);
+            transform: translateY(-4px);
+            border-color: var(--color-teal-primary) !important;
         }
     </style>
 </head>
 
-<body class="bg-background-light text-text-dark">
+<body class="bg-gray-50 text-gray-800">
 
     <!-- Sticky Navigation Bar -->
     <header id="navbar" class="sticky top-0 w-full">
         <nav class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 py-3">
             <div class="flex justify-between items-center">
-                <!-- Primary color is now Teal 600 -->
-                <a href="#hero" class="text-xl font-bold tracking-wider" style="color: var(--color-teal-primary);">M.
-                    SHAHARIAR</a>
+                <!-- Brand Name -->
+                <a href="#hero" class="text-2xl font-extrabold tracking-tight"
+                    style="color: var(--color-teal-primary);">
+                    MD. SHAHARIAR
+                </a>
 
                 <!-- Desktop Navigation Links -->
-                <div class="hidden md:flex space-x-4">
-                    <a href="#education" class="text-sm font-medium transition duration-150"
-                        onmouseover="this.style.color='var(--color-teal-primary)'"
-                        onmouseout="this.style.color=''">Education</a>
-                    <a href="#experience" class="text-sm font-medium transition duration-150"
-                        onmouseover="this.style.color='var(--color-teal-primary)'"
-                        onmouseout="this.style.color=''">Experience</a>
-                    <a href="#awards" class="text-sm font-medium transition duration-150"
-                        onmouseover="this.style.color='var(--color-teal-primary)'"
-                        onmouseout="this.style.color=''">Awards</a>
-                    <a href="#research" class="text-sm font-medium transition duration-150"
-                        onmouseover="this.style.color='var(--color-teal-primary)'"
-                        onmouseout="this.style.color=''">Research</a>
+                <div class="hidden md:flex space-x-6">
+                    <a href="#education"
+                        class="text-base font-medium text-gray-700 hover:text-teal-600 transition duration-150">Education</a>
+                    <a href="#experience"
+                        class="text-base font-medium text-gray-700 hover:text-teal-600 transition duration-150">Experience</a>
+                    <a href="#awards"
+                        class="text-base font-medium text-gray-700 hover:text-teal-600 transition duration-150">Awards</a>
+                    <a href="#research"
+                        class="text-base font-medium text-gray-700 hover:text-teal-600 transition duration-150">Research</a>
                 </div>
 
                 <!-- Mobile Menu Button -->
@@ -119,13 +95,13 @@
             <!-- Mobile Menu Dropdown -->
             <div id="mobile-menu" class="hidden md:hidden pt-2 pb-4 space-y-2 border-t border-gray-200 mt-2">
                 <a href="#education" onclick="closeMenu()"
-                    class="block px-3 py-2 rounded-md text-base font-medium text-gray-700 hover:bg-gray-50 hover:text-gray-900">Education</a>
+                    class="block px-3 py-2 rounded-md text-base font-medium text-gray-700 hover:bg-teal-50 hover:text-teal-600">Education</a>
                 <a href="#experience" onclick="closeMenu()"
-                    class="block px-3 py-2 rounded-md text-base font-medium text-gray-700 hover:bg-gray-50 hover:text-gray-900">Experience</a>
+                    class="block px-3 py-2 rounded-md text-base font-medium text-gray-700 hover:bg-teal-50 hover:text-teal-600">Experience</a>
                 <a href="#awards" onclick="closeMenu()"
-                    class="block px-3 py-2 rounded-md text-base font-medium text-gray-700 hover:bg-gray-50 hover:text-gray-900">Awards</a>
+                    class="block px-3 py-2 rounded-md text-base font-medium text-gray-700 hover:bg-teal-50 hover:text-teal-600">Awards</a>
                 <a href="#research" onclick="closeMenu()"
-                    class="block px-3 py-2 rounded-md text-base font-medium text-gray-700 hover:bg-gray-50 hover:text-gray-900">Research</a>
+                    class="block px-3 py-2 rounded-md text-base font-medium text-gray-700 hover:bg-teal-50 hover:text-teal-600">Research</a>
             </div>
         </nav>
     </header>
@@ -135,11 +111,11 @@
 
         <!-- 1. Hero Section (Introduction) -->
         <section id="hero" class="min-h-[70vh] flex items-center mb-24 px-4 sm:px-6 lg:px-8">
-            <div class="grid md:grid-cols-3 gap-12 items-center">
+            <div class="grid md:grid-cols-3 gap-12 items-center w-full">
 
                 <!-- Profile Picture Container -->
-                <div class="md:col-span-1 flex justify-center fade-in-up">
-                    <div class="w-64 h-64 rounded-full p-1 shadow-xl"
+                <div class="md:col-span-1 flex justify-center fade-in-up order-2 md:order-1">
+                    <div class="w-64 h-64 rounded-full p-2 shadow-xl ring-4 ring-teal-600/50"
                         style="border-width: 4px; border-color: var(--color-teal-primary);">
                         <img src="photo.jpg" alt="MD. SHAHARIAR Profile Picture"
                             class="w-full h-full rounded-full object-cover"
@@ -148,35 +124,32 @@
                 </div>
 
                 <!-- Text Content -->
-                <div class="md:col-span-2 text-center md:text-left fade-in-up" style="transition-delay: 0.1s;">
-                    <p class="font-semibold text-lg mb-2" style="color: var(--color-teal-primary);">Portfolio</p>
-                    <h1 class="text-5xl sm:text-6xl font-extrabold leading-tight mb-4">
-                        MD. <span style="color: var(--color-teal-primary);">SHAHARIAR</span>
+                <div class="md:col-span-2 text-center md:text-left fade-in-up order-1 md:order-2"
+                    style="transition-delay: 0.1s;">
+                    <p class="font-semibold text-lg mb-2 text-teal-600">Scientific Portfolio</p>
+                    <h1 class="text-5xl sm:text-6xl lg:text-7xl font-extrabold leading-tight mb-4">
+                        MD. <span class="text-teal-600">SHAHARIAR</span>
                     </h1>
-                    <p class="text-2xl text-gray-700 font-light mb-6">
+                    <p class="text-xl sm:text-2xl text-gray-700 font-light mb-6">
                         <strong>Pharmacy Graduate</strong> & <strong>Scientific Researcher</strong>
                     </p>
-                    <p class="max-w-lg mx-auto md:mx-0 text-gray-600 mb-8">
+                    <p class="max-w-2xl mx-auto md:mx-0 text-gray-600 mb-8 leading-relaxed">
                         Highly <strong>motivated graduate</strong> from the Department of Pharmacy, Jahangirnagar
                         University, with a strong <strong>academic background (CGPA: 3.74/4.00)</strong> and expertise
                         in <strong>Natural Product Chemistry</strong>, <strong>Computer-Aided Drug Design
                             (CADD)</strong>, and <strong>leadership</strong>. Dedicated to <strong>scientific
                             advancement</strong> and <strong>pharmaceutical innovation</strong>.
                     </p>
-                    <div class="flex justify-center md:justify-start space-x-4">
+                    <div
+                        class="flex flex-col sm:flex-row justify-center md:justify-start space-y-4 sm:space-y-0 sm:space-x-4">
                         <!-- CTA button uses Teal 600 as primary color, hover is slightly darker teal 700 -->
                         <a href="#education"
-                            class="text-white px-6 py-3 rounded-lg font-semibold transition duration-300 shadow-md flex items-center"
-                            style="background-color: var(--color-teal-primary);"
-                            onmouseover="this.style.backgroundColor='#0f766e'" /* Teal 700 */
-                            onmouseout="this.style.backgroundColor='var(--color-teal-primary)'">
+                            class="bg-teal-600 text-white px-8 py-3 rounded-xl font-semibold transition duration-300 shadow-lg hover:bg-teal-700 flex items-center justify-center">
                             View Profile <i data-lucide="arrow-right" class="w-5 h-5 ml-2"></i>
                         </a>
                         <!-- Contact button uses light blue for hover -->
                         <button onclick="copyEmail()"
-                            class="border border-gray-300 text-gray-700 px-6 py-3 rounded-lg font-semibold transition duration-300 shadow-sm flex items-center"
-                            onmouseover="this.style.backgroundColor='#E0E7FF'"
-                            onmouseout="this.style.backgroundColor='transparent'">
+                            class="border border-gray-300 text-gray-700 px-8 py-3 rounded-xl font-semibold transition duration-300 shadow-md hover:bg-blue-50 hover:text-blue-700 flex items-center justify-center">
                             Contact Me <i data-lucide="mail" class="w-5 h-5 ml-2"></i>
                         </button>
                     </div>
@@ -185,42 +158,38 @@
         </section>
 
         <!-- 2. Education & Skills Section -->
-        <!-- Background uses Teal 50 opacity -->
         <section id="education" class="py-16 border-t border-gray-200 px-4 sm:px-6 lg:px-8"
             style="background-color: var(--color-light-bg);">
-            <h2 class="text-3xl font-bold text-center mb-12 fade-in-up">Education & Core Competencies</h2>
+            <h2 class="text-3xl font-bold text-center mb-12 fade-in-up text-gray-900">Education & Core Competencies</h2>
 
             <!-- Education Card -->
-            <div class="bg-white p-8 rounded-xl shadow-lg border-2 border-transparent hover-card max-w-4xl mx-auto mb-12 fade-in-up"
+            <div class="bg-white p-6 sm:p-8 rounded-xl shadow-xl border-2 border-transparent hover-card max-w-5xl mx-auto mb-12 fade-in-up"
                 style="transition-delay: 0.2s;">
                 <div class="flex items-start mb-4">
                     <!-- Icon is Teal 600 -->
-                    <i data-lucide="graduation-cap" class="w-8 h-8 mr-4 mt-1 flex-shrink-0"
-                        style="color: var(--color-teal-primary);"></i>
+                    <i data-lucide="graduation-cap" class="w-8 h-8 mr-4 mt-1 flex-shrink-0 text-teal-600"></i>
                     <div>
                         <!-- Heading is Teal 600 -->
-                        <h3 class="text-2xl font-semibold" style="color: var(--color-teal-primary);"><strong>Bachelor of
+                        <h3 class="text-2xl font-bold text-teal-600"><strong>Bachelor of
                                 Pharmacy (Professional)</strong></h3>
-                        <p class="text-gray-600 font-medium"><strong>Jahangirnagar University</strong>, Savar, Dhaka,
+                        <p class="text-gray-700 font-medium"><strong>Jahangirnagar University</strong>, Savar, Dhaka,
                             Bangladesh</p>
                         <p class="text-sm text-gray-500">2018 - Ongoing (Exam Completed)</p>
                     </div>
                 </div>
-                <div class="grid sm:grid-cols-2 gap-4 mt-6 text-gray-700">
+                <div class="grid sm:grid-cols-2 gap-4 mt-6 pt-4 border-t border-gray-100 text-gray-700">
                     <div>
                         <p class="font-medium flex items-center mb-1"><i data-lucide="star"
                                 class="w-4 h-4 text-yellow-500 mr-2"></i> <strong>CGPA</strong>: <span
-                                class="font-bold text-lg ml-1"
-                                style="color: var(--color-teal-primary);">3.74/4.00</span></p>
+                                class="font-bold text-lg ml-1 text-teal-600">3.74/4.00</span></p>
                         <p class="font-medium flex items-center"><i data-lucide="medal"
                                 class="w-4 h-4 text-gray-500 mr-2"></i> <strong>Position</strong>: <span
-                                class="font-bold text-lg ml-1" style="color: var(--color-teal-primary);">2/55</span>
+                                class="font-bold text-lg ml-1 text-teal-600">2/55</span>
                             students</p>
                     </div>
                     <div>
                         <p class="font-medium flex items-start"><i data-lucide="book-open-text"
-                                class="w-4 h-4 text-gray-500 mr-2 mt-1"></i> <strong>Medium of Instruction
-                                (MOI)</strong>: English</p>
+                                class="w-4 h-4 text-gray-500 mr-2 mt-1"></i> <strong>MOI</strong>: English</p>
                         <p class="font-medium flex items-start"><i data-lucide="briefcase-medical"
                                 class="w-4 h-4 text-gray-500 mr-2 mt-1"></i> <strong>Focus</strong>: Pharmaceutical
                             Sciences</p>
@@ -229,43 +198,45 @@
             </div>
 
             <!-- Skills Grid -->
-            <div class="max-w-4xl mx-auto fade-in-up" style="transition-delay: 0.3s;">
-                <h3 class="text-xl font-semibold mb-4 text-text-dark">Scientific & Technical Skills</h3>
-                <div class="grid grid-cols-2 sm:grid-cols-3 gap-4">
+            <div class="max-w-5xl mx-auto fade-in-up" style="transition-delay: 0.3s;">
+                <h3 class="text-xl font-bold mb-4 text-gray-900 border-l-4 border-teal-600 pl-3">Scientific & Technical
+                    Skills</h3>
+                <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
                     <!-- All skill items use Teal 600 for icon and border accent -->
-                    <div class="skill-item bg-white p-4 rounded-lg shadow-md flex items-center"
-                        style="border-bottom-width: 2px; border-color: var(--color-teal-primary);">
-                        <i data-lucide="flask-conical" class="w-5 h-5 mr-3"
-                            style="color: var(--color-teal-primary);"></i>
-                        <span class="font-medium"><strong>Wet Lab</strong>: Natural Product Chemistry, Extraction,
-                            Pharmacology</span>
+                    <div
+                        class="skill-item bg-white p-5 rounded-xl shadow-lg flex items-center border-b-4 border-teal-600">
+                        <i data-lucide="flask-conical" class="w-6 h-6 mr-3 text-teal-600"></i>
+                        <span class="font-medium text-gray-700"><strong>Wet Lab</strong>: Natural Product Chemistry,
+                            Extraction, Pharmacology</span>
                     </div>
-                    <div class="skill-item bg-white p-4 rounded-lg shadow-md flex items-center"
-                        style="border-bottom-width: 2px; border-color: var(--color-teal-primary);">
-                        <i data-lucide="cpu" class="w-5 h-5 mr-3" style="color: var(--color-teal-primary);"></i>
-                        <span class="font-medium"><strong>Dry Lab</strong>: Computer Aided Drug Design (CADD)</span>
+                    <div
+                        class="skill-item bg-white p-5 rounded-xl shadow-lg flex items-center border-b-4 border-teal-600">
+                        <i data-lucide="cpu" class="w-6 h-6 mr-3 text-teal-600"></i>
+                        <span class="font-medium text-gray-700"><strong>Dry Lab</strong>: Computer Aided Drug Design
+                            (CADD)</span>
                     </div>
-                    <div class="skill-item bg-white p-4 rounded-lg shadow-md flex items-center"
-                        style="border-bottom-width: 2px; border-color: var(--color-teal-primary);">
-                        <i data-lucide="file-text" class="w-5 h-5 mr-3" style="color: var(--color-teal-primary);"></i>
-                        <span class="font-medium"><strong>Documentation</strong>: MS Office, Mendeley, Zotero</span>
+                    <div
+                        class="skill-item bg-white p-5 rounded-xl shadow-lg flex items-center border-b-4 border-teal-600">
+                        <i data-lucide="file-text" class="w-6 h-6 mr-3 text-teal-600"></i>
+                        <span class="font-medium text-gray-700"><strong>Documentation</strong>: MS Office, Mendeley,
+                            Zotero</span>
                     </div>
-                    <div class="skill-item bg-white p-4 rounded-lg shadow-md flex items-center"
-                        style="border-bottom-width: 2px; border-color: var(--color-teal-primary);">
-                        <i data-lucide="speech" class="w-5 h-5 mr-3" style="color: var(--color-teal-primary);"></i>
-                        <span class="font-medium"><strong>Language</strong>: Bangla (Native), English
+                    <div
+                        class="skill-item bg-white p-5 rounded-xl shadow-lg flex items-center border-b-4 border-teal-600">
+                        <i data-lucide="speech" class="w-6 h-6 mr-3 text-teal-600"></i>
+                        <span class="font-medium text-gray-700"><strong>Language</strong>: Bangla (Native), English
                             (Proficient)</span>
                     </div>
-                    <div class="skill-item bg-white p-4 rounded-lg shadow-md flex items-center"
-                        style="border-bottom-width: 2px; border-color: var(--color-teal-primary);">
-                        <i data-lucide="languages" class="w-5 h-5 mr-3" style="color: var(--color-teal-primary);"></i>
-                        <span class="font-medium"><strong>Language</strong>: German (Elementary Certificate
-                            Course)</span>
+                    <div
+                        class="skill-item bg-white p-5 rounded-xl shadow-lg flex items-center border-b-4 border-teal-600">
+                        <i data-lucide="languages" class="w-6 h-6 mr-3 text-teal-600"></i>
+                        <span class="font-medium text-gray-700"><strong>Language</strong>: German (Elementary
+                            Certificate Course)</span>
                     </div>
-                    <div class="skill-item bg-white p-4 rounded-lg shadow-md flex items-center"
-                        style="border-bottom-width: 2px; border-color: var(--color-teal-primary);">
-                        <i data-lucide="users" class="w-5 h-5 mr-3" style="color: var(--color-teal-primary);"></i>
-                        <span class="font-medium"><strong>Leadership</strong> & Communication</span>
+                    <div
+                        class="skill-item bg-white p-5 rounded-xl shadow-lg flex items-center border-b-4 border-teal-600">
+                        <i data-lucide="users" class="w-6 h-6 mr-3 text-teal-600"></i>
+                        <span class="font-medium text-gray-700"><strong>Leadership</strong> & Communication</span>
                     </div>
                 </div>
             </div>
@@ -273,19 +244,18 @@
 
         <!-- 3. Experience Section -->
         <section id="experience" class="py-16 border-t border-gray-200 px-4 sm:px-6 lg:px-8">
-            <h2 class="text-3xl font-bold text-center mb-12 fade-in-up">Professional Experience & Leadership</h2>
+            <h2 class="text-3xl font-bold text-center mb-12 fade-in-up text-gray-900">Professional Experience &
+                Leadership</h2>
 
-            <div class="grid md:grid-cols-2 gap-8 max-w-4xl mx-auto">
+            <div class="grid md:grid-cols-2 gap-8 max-w-5xl mx-auto">
 
                 <!-- Industrial Training -->
-                <div class="fade-in-up hover-card bg-white p-6 rounded-xl shadow-lg"
-                    style="border-left-width: 4px; border-color: var(--color-teal-primary);">
-                    <div class="flex justify-between items-center mb-3">
-                        <h3 class="text-xl font-semibold" style="color: var(--color-teal-primary);"><strong>Industrial
-                                Training</strong></h3>
-                        <span class="text-sm text-gray-500 font-medium"><strong>2025</strong></span>
+                <div class="fade-in-up hover-card bg-white p-6 rounded-xl shadow-lg border-l-4 border-teal-600">
+                    <div class="flex justify-between items-start mb-3">
+                        <h3 class="text-xl font-bold text-teal-600"><strong>Industrial Training</strong></h3>
+                        <span class="text-sm text-gray-500 font-medium whitespace-nowrap"><strong>2025</strong></span>
                     </div>
-                    <p class="text-lg font-medium text-text-dark mb-1">Pharmaceutical Internship</p>
+                    <p class="text-lg font-medium text-gray-800 mb-1">Pharmaceutical Internship</p>
                     <p class="text-gray-600 mb-4"><strong>Square Pharmaceuticals PLC.</strong> (Bangladesh's Leading
                         Pharmaceutical Company)</p>
                     <p class="text-sm text-gray-500">Successfully completed a <strong>14-day industrial training
@@ -293,14 +263,14 @@
                 </div>
 
                 <!-- Teaching & Mentoring -->
-                <div class="fade-in-up hover-card bg-white p-6 rounded-xl shadow-lg"
-                    style="transition-delay: 0.1s; border-left-width: 4px; border-color: var(--color-teal-primary);">
-                    <div class="flex justify-between items-center mb-3">
-                        <h3 class="text-xl font-semibold" style="color: var(--color-teal-primary);"><strong>Teaching &
-                                Mentoring</strong></h3>
-                        <span class="text-sm text-gray-500 font-medium"><strong>2019 – Ongoing</strong></span>
+                <div class="fade-in-up hover-card bg-white p-6 rounded-xl shadow-lg border-l-4 border-teal-600"
+                    style="transition-delay: 0.1s;">
+                    <div class="flex justify-between items-start mb-3">
+                        <h3 class="text-xl font-bold text-teal-600"><strong>Teaching & Mentoring</strong></h3>
+                        <span class="text-sm text-gray-500 font-medium whitespace-nowrap"><strong>2019 –
+                                Ongoing</strong></span>
                     </div>
-                    <p class="text-lg font-medium text-text-dark mb-1"><strong>Science Tutor</strong> (Chemistry,
+                    <p class="text-lg font-medium text-gray-800 mb-1"><strong>Science Tutor</strong> (Chemistry,
                         Biological Science)</p>
                     <p class="text-gray-600 mb-4">Private and Coaching Institution, Dhaka, Bangladesh</p>
                     <ul class="list-disc list-inside text-sm text-gray-500 space-y-1">
@@ -310,15 +280,14 @@
                 </div>
 
                 <!-- Leadership Role -->
-                <div class="md:col-span-2 fade-in-up hover-card bg-white p-6 rounded-xl shadow-lg"
-                    style="transition-delay: 0.2s; border-left-width: 4px; border-color: var(--color-teal-primary);">
-                    <div class="flex justify-between items-center mb-3">
-                        <h3 class="text-xl font-semibold" style="color: var(--color-teal-primary);">
-                            <strong>Leadership</strong>
-                        </h3>
-                        <span class="text-sm text-gray-500 font-medium"><strong>3 Years Tenure</strong></span>
+                <div class="md:col-span-2 fade-in-up hover-card bg-white p-6 rounded-xl shadow-lg border-l-4 border-teal-600"
+                    style="transition-delay: 0.2s;">
+                    <div class="flex justify-between items-start mb-3">
+                        <h3 class="text-xl font-bold text-teal-600"><strong>Leadership</strong></h3>
+                        <span class="text-sm text-gray-500 font-medium whitespace-nowrap"><strong>3 Years
+                                Tenure</strong></span>
                     </div>
-                    <p class="text-lg font-medium text-text-dark mb-1"><strong>Class Representative</strong></p>
+                    <p class="text-lg font-medium text-gray-800 mb-1"><strong>Class Representative</strong></p>
                     <p class="text-gray-600 mb-4">Department of Pharmacy, <strong>Jahangirnagar University</strong></p>
                     <ul class="list-disc list-inside text-sm text-gray-500 space-y-1">
                         <li>Acted as a crucial <strong>liaison</strong> between students and faculty.</li>
@@ -329,195 +298,146 @@
             </div>
         </section>
 
-        <!-- 4. Awards, Training & Scientific Activities Section (Timeline Layout) -->
+        <!-- 4. Awards, Training & Scientific Activities Section (Grid Layout) -->
         <section id="awards" class="py-16 border-t border-gray-200 px-4 sm:px-6 lg:px-8"
             style="background-color: var(--color-light-bg);">
-            <h2 class="text-3xl font-bold text-center mb-12 fade-in-up">Honors, Awards & Scientific Activities</h2>
+            <h2 class="text-3xl font-bold text-center mb-12 fade-in-up text-gray-900">Honors, Awards & Scientific
+                Activities</h2>
 
-            <!-- Timeline Structure -->
-            <div class="max-w-4xl mx-auto">
-                <!-- Use a single centered line on desktop, left-aligned on mobile -->
-                <div class="timeline-container relative wrap overflow-hidden p-10 h-full">
+            <div class="max-w-5xl mx-auto grid md:grid-cols-2 gap-8">
 
-                    <!-- Vertical line. Positioned left for mobile, centered for desktop. -->
-                    <div class="timeline-line-vertical"></div>
-
-                    <!-- Item 1: Research Activity (Right on MD+) -->
-                    <div class="mb-8 flex justify-start md:justify-between items-center w-full fade-in-up">
-                        <div class="order-1 w-full md:w-5/12 md:mr-8">
-                            <!-- Card is on the left on mobile, right on desktop -->
-                            <div class="bg-white rounded-lg shadow-xl px-6 py-4 hover-card md:border-t-4"
-                                style="border-top-width: 4px; border-color: var(--color-teal-primary);">
-                                <h3 class="font-bold text-lg" style="color: var(--color-teal-primary);"><strong>Ongoing
-                                        Research Project</strong></h3>
-                                <p class="text-sm leading-snug text-gray-600 pt-1">
-                                    <strong>In vivo</strong> and <strong>In silico Evaluation</strong> of *Haldina
-                                    cordifolia*'s Impact on Reproductive Hormones in Mice Exposed to Bisphenol A.
-                                </p>
-                                <span class="text-xs text-gray-400 mt-2 block">Pharmacology Lab, Jahangirnagar
-                                    University</span>
-                            </div>
-                        </div>
-                        <!-- Dot: Positioned absolutely next to the line. Left on mobile, center on desktop. -->
-                        <div class="z-10 flex items-center order-1 shadow-xl w-6 h-6 rounded-full timeline-dot absolute left-1 md:left-1/2 md:-ml-3"
-                            style="background-color: var(--color-teal-primary);">
-                            <i data-lucide="dna" class="w-4 h-4 text-white mx-auto"></i>
-                        </div>
-                        <div class="hidden md:block order-1 md:w-5/12"></div>
+                <!-- Item 1: Ongoing Research Activity -->
+                <div class="fade-in-up bg-white p-6 rounded-xl shadow-xl hover-card border-t-4 border-teal-600">
+                    <div class="flex items-center mb-3">
+                        <i data-lucide="dna" class="w-6 h-6 mr-3 text-teal-600 flex-shrink-0"></i>
+                        <h3 class="text-xl font-bold text-gray-900 leading-snug">Ongoing Research Project</h3>
                     </div>
-
-                    <!-- Item 2: Industrial Training (Left on MD+) -->
-                    <div class="mb-8 flex justify-start md:justify-between flex-row-reverse items-center w-full fade-in-up"
-                        style="transition-delay: 0.1s;">
-                        <div class="order-1 w-full md:w-5/12 md:ml-8">
-                            <!-- Card is on the left on mobile, left on desktop (due to flex-row-reverse) -->
-                            <div class="bg-white rounded-lg shadow-xl px-6 py-4 hover-card md:border-t-4"
-                                style="border-top-width: 4px; border-color: var(--color-teal-primary);">
-                                <h3 class="font-bold text-lg" style="color: var(--color-teal-primary);">
-                                    <strong>Industrial Training</strong>
-                                </h3>
-                                <p class="text-sm leading-snug text-gray-600 pt-1">
-                                    <strong>14-day internship</strong> at <strong>Square Pharmaceuticals PLC.</strong>
-                                </p>
-                                <span class="text-xs text-gray-400 mt-2 block">2025</span>
-                            </div>
-                        </div>
-                        <!-- Dot: Positioned absolutely next to the line. Left on mobile, center on desktop. -->
-                        <div class="z-10 flex items-center order-1 shadow-xl w-6 h-6 rounded-full timeline-dot absolute left-1 md:left-1/2 md:-ml-3"
-                            style="background-color: var(--color-teal-primary);">
-                            <i data-lucide="factory" class="w-4 h-4 text-white mx-auto"></i>
-                        </div>
-                        <div class="hidden md:block order-1 md:w-5/12"></div>
+                    <p class="text-sm text-gray-600 mb-2">
+                        **Activity:** *In vivo* and *In silico* Evaluation of *Haldina cordifolia*'s Impact on
+                        Reproductive Hormones.
+                    </p>
+                    <div class="flex justify-between items-center text-xs text-gray-500 font-medium pt-2 border-t mt-3">
+                        <span>Pharmacology Lab, JU</span>
+                        <span class="bg-yellow-100 text-yellow-800 font-bold px-2 py-0.5 rounded-full">Ongoing</span>
                     </div>
-
-                    <!-- Item 3: Good Laboratory Practice Training (Right on MD+) -->
-                    <div class="mb-8 flex justify-start md:justify-between items-center w-full fade-in-up"
-                        style="transition-delay: 0.2s;">
-                        <div class="order-1 w-full md:w-5/12 md:mr-8">
-                            <div class="bg-white rounded-lg shadow-xl px-6 py-4 hover-card md:border-t-4"
-                                style="border-top-width: 4px; border-color: var(--color-teal-primary);">
-                                <h3 class="font-bold text-lg" style="color: var(--color-teal-primary);"><strong>Good
-                                        Laboratory Practice (GLP)</strong></h3>
-                                <p class="text-sm leading-snug text-gray-600 pt-1">
-                                    Participated in a <strong>One-day training Program</strong> at Jahangirnagar
-                                    University.
-                                </p>
-                                <span class="text-xs text-gray-400 mt-2 block">2025</span>
-                            </div>
-                        </div>
-                        <!-- Dot: Positioned absolutely next to the line. Left on mobile, center on desktop. -->
-                        <div class="z-10 flex items-center order-1 shadow-xl w-6 h-6 rounded-full timeline-dot absolute left-1 md:left-1/2 md:-ml-3"
-                            style="background-color: var(--color-teal-primary);">
-                            <i data-lucide="briefcase" class="w-4 h-4 text-white mx-auto"></i>
-                        </div>
-                        <div class="hidden md:block order-1 md:w-5/12"></div>
-                    </div>
-
-                    <!-- Item 4: DU Pharma Fest Poster (Left on MD+) -->
-                    <div class="mb-8 flex justify-start md:justify-between flex-row-reverse items-center w-full fade-in-up"
-                        style="transition-delay: 0.3s;">
-                        <div class="order-1 w-full md:w-5/12 md:ml-8">
-                            <div class="bg-white rounded-lg shadow-xl px-6 py-4 hover-card md:border-t-4"
-                                style="border-top-width: 4px; border-color: var(--color-teal-primary);">
-                                <h3 class="font-bold text-lg" style="color: var(--color-teal-primary);"><strong>Poster
-                                        Presentation</strong></h3>
-                                <p class="text-sm leading-snug text-gray-600 pt-1">
-                                    Successfully <strong>participated</strong> at the <strong>DU Pharma Fest
-                                        2024</strong>, organized by the Faculty of Pharmacy, University of Dhaka.
-                                </p>
-                                <span class="text-xs text-gray-400 mt-2 block">2024</span>
-                            </div>
-                        </div>
-                        <!-- Dot: Positioned absolutely next to the line. Left on mobile, center on desktop. -->
-                        <div class="z-10 flex items-center order-1 shadow-xl w-6 h-6 rounded-full timeline-dot absolute left-1 md:left-1/2 md:-ml-3"
-                            style="background-color: var(--color-teal-primary);">
-                            <i data-lucide="clipboard-list" class="w-4 h-4 text-white mx-auto"></i>
-                        </div>
-                        <div class="hidden md:block order-1 md:w-5/12"></div>
-                    </div>
-
-                    <!-- Item 5: CADD Training (Right on MD+) -->
-                    <div class="mb-8 flex justify-start md:justify-between items-center w-full fade-in-up"
-                        style="transition-delay: 0.4s;">
-                        <div class="order-1 w-full md:w-5/12 md:mr-8">
-                            <div class="bg-white rounded-lg shadow-xl px-6 py-4 hover-card md:border-t-4"
-                                style="border-top-width: 4px; border-color: var(--color-teal-primary);">
-                                <h3 class="font-bold text-lg" style="color: var(--color-teal-primary);"><strong>Computer
-                                        Aided Drug Design (CADD) Training</strong></h3>
-                                <p class="text-sm leading-snug text-gray-600 pt-1">
-                                    Completed "<strong>4 Days Long Online Training A to Z</strong>" by Dawn of
-                                    Bioinformatics Limited.
-                                </p>
-                                <span class="text-xs text-gray-400 mt-2 block">2024</span>
-                            </div>
-                        </div>
-                        <!-- Dot: Positioned absolutely next to the line. Left on mobile, center on desktop. -->
-                        <div class="z-10 flex items-center order-1 shadow-xl w-6 h-6 rounded-full timeline-dot absolute left-1 md:left-1/2 md:-ml-3"
-                            style="background-color: var(--color-teal-primary);">
-                            <i data-lucide="atom" class="w-4 h-4 text-white mx-auto"></i>
-                        </div>
-                        <div class="hidden md:block order-1 md:w-5/12"></div>
-                    </div>
-
-                    <!-- Item 6: DIU Pharma Fest (Left on MD+) -->
-                    <div class="mb-8 flex justify-start md:justify-between flex-row-reverse items-center w-full fade-in-up"
-                        style="transition-delay: 0.5s;">
-                        <div class="order-1 w-full md:w-5/12 md:ml-8">
-                            <div class="bg-white rounded-lg shadow-xl px-6 py-4 hover-card md:border-t-4"
-                                style="border-top-width: 4px; border-color: var(--color-teal-primary);">
-                                <h3 class="font-bold text-lg" style="color: var(--color-teal-primary);"><strong>2<sup
-                                            class="font-bold">nd</sup> Prize in Poster Presentation</strong></h3>
-                                <p class="text-sm leading-snug text-gray-600 pt-1">
-                                    Awarded at the <strong>DIU Pharma Fest</strong>, organized by Daffodil International
-                                    University.
-                                </p>
-                                <span class="text-xs text-gray-400 mt-2 block">2023</span>
-                            </div>
-                        </div>
-                        <!-- Dot: Positioned absolutely next to the line. Left on mobile, center on desktop. -->
-                        <div class="z-10 flex items-center order-1 shadow-xl w-6 h-6 rounded-full timeline-dot absolute left-1 md:left-1/2 md:-ml-3"
-                            style="background-color: var(--color-teal-primary);">
-                            <i data-lucide="trophy" class="w-4 h-4 text-white mx-auto"></i>
-                        </div>
-                        <div class="hidden md:block order-1 md:w-5/12"></div>
-                    </div>
-
                 </div>
+
+                <!-- Item 2: Industrial Training -->
+                <div class="fade-in-up bg-white p-6 rounded-xl shadow-xl hover-card border-t-4 border-teal-600"
+                    style="transition-delay: 0.1s;">
+                    <div class="flex items-center mb-3">
+                        <i data-lucide="factory" class="w-6 h-6 mr-3 text-teal-600 flex-shrink-0"></i>
+                        <h3 class="text-xl font-bold text-gray-900 leading-snug">Industrial Training Program</h3>
+                    </div>
+                    <p class="text-sm text-gray-600 mb-2">
+                        **Institution:** Square Pharmaceuticals PLC. (14-day internship). Focused on pharmaceutical
+                        manufacturing processes.
+                    </p>
+                    <div class="flex justify-between items-center text-xs text-gray-500 font-medium pt-2 border-t mt-3">
+                        <span>Internship</span>
+                        <span class="font-bold text-gray-700">2025</span>
+                    </div>
+                </div>
+
+                <!-- Item 3: GLP Training -->
+                <div class="fade-in-up bg-white p-6 rounded-xl shadow-xl hover-card border-t-4 border-teal-600"
+                    style="transition-delay: 0.2s;">
+                    <div class="flex items-center mb-3">
+                        <i data-lucide="briefcase" class="w-6 h-6 mr-3 text-teal-600 flex-shrink-0"></i>
+                        <h3 class="text-xl font-bold text-gray-900 leading-snug">GLP Training Program</h3>
+                    </div>
+                    <p class="text-sm text-gray-600 mb-2">
+                        **Activity:** One-day training program on Good Laboratory Practice (GLP) standards.
+                    </p>
+                    <div class="flex justify-between items-center text-xs text-gray-500 font-medium pt-2 border-t mt-3">
+                        <span>Training/Certification</span>
+                        <span class="font-bold text-gray-700">2025</span>
+                    </div>
+                </div>
+
+                <!-- Item 4: DU Pharma Fest Poster -->
+                <div class="fade-in-up bg-white p-6 rounded-xl shadow-xl hover-card border-t-4 border-teal-600"
+                    style="transition-delay: 0.3s;">
+                    <div class="flex items-center mb-3">
+                        <i data-lucide="clipboard-list" class="w-6 h-6 mr-3 text-teal-600 flex-shrink-0"></i>
+                        <h3 class="text-xl font-bold text-gray-900 leading-snug">DU Pharma Fest Poster Participation
+                        </h3>
+                    </div>
+                    <p class="text-sm text-gray-600 mb-2">
+                        **Event:** Successfully participated in the poster presentation session at DU Pharma Fest.
+                    </p>
+                    <div class="flex justify-between items-center text-xs text-gray-500 font-medium pt-2 border-t mt-3">
+                        <span>Conference/Presentation</span>
+                        <span class="font-bold text-gray-700">2024</span>
+                    </div>
+                </div>
+
+                <!-- Item 5: CADD Training -->
+                <div class="fade-in-up bg-white p-6 rounded-xl shadow-xl hover-card border-t-4 border-teal-600"
+                    style="transition-delay: 0.4s;">
+                    <div class="flex items-center mb-3">
+                        <i data-lucide="atom" class="w-6 h-6 mr-3 text-teal-600 flex-shrink-0"></i>
+                        <h3 class="text-xl font-bold text-gray-900 leading-snug">CADD Training (A to Z)</h3>
+                    </div>
+                    <p class="text-sm text-gray-600 mb-2">
+                        **Provider:** Dawn of Bioinformatics Limited. Focused on Computer Aided Drug Design
+                        methodologies.
+                    </p>
+                    <div class="flex justify-between items-center text-xs text-gray-500 font-medium pt-2 border-t mt-3">
+                        <span>Training/Certification</span>
+                        <span class="font-bold text-gray-700">2024</span>
+                    </div>
+                </div>
+
+                <!-- Item 6: DIU Pharma Fest 2nd Prize -->
+                <div class="fade-in-up bg-white p-6 rounded-xl shadow-xl hover-card border-t-4 border-teal-600"
+                    style="transition-delay: 0.5s;">
+                    <div class="flex items-center mb-3">
+                        <i data-lucide="trophy" class="w-6 h-6 mr-3 text-teal-600 flex-shrink-0"></i>
+                        <h3 class="text-xl font-bold text-gray-900 leading-snug">2nd Prize in Poster Presentation</h3>
+                    </div>
+                    <p class="text-sm text-gray-600 mb-2">
+                        **Award:** Secured Second Prize at the DIU Pharma Fest (Daffodil International University).
+                    </p>
+                    <div class="flex justify-between items-center text-xs text-gray-500 font-medium pt-2 border-t mt-3">
+                        <span>Award/Competition</span>
+                        <span class="font-bold text-gray-700">2023</span>
+                    </div>
+                </div>
+
             </div>
         </section>
 
         <!-- 5. Research Overview Section -->
-        <section id="research" class="py-16 border-t border-gray-200 px-4 sm:px-6 lg:px-8"
-            style="background-color: var(--color-light-bg);">
-            <h2 class="text-3xl font-bold text-center mb-12 fade-in-up">Key Research & Documentation</h2>
+        <section id="research" class="py-16 border-t border-gray-200 px-4 sm:px-6 lg:px-8">
+            <h2 class="text-3xl font-bold text-center mb-12 fade-in-up text-gray-900">Key Research & Documentation</h2>
 
-            <div class="max-w-6xl mx-auto space-y-8">
+            <div class="max-w-5xl mx-auto space-y-8">
 
-                <!-- Ongoing Research Project Card (New, prominent placement) -->
-                <div class="fade-in-up bg-white p-8 rounded-xl shadow-lg border-2 border-transparent hover-card mx-auto max-w-4xl"
-                    style="border-color: var(--color-teal-primary); transition-delay: 0.1s;">
-                    <h3 class="text-2xl font-semibold mb-3 flex items-center" style="color: var(--color-teal-primary);">
+                <!-- Ongoing Research Project Card (Prominent) -->
+                <div class="fade-in-up bg-white p-6 sm:p-8 rounded-xl shadow-xl border-4 border-teal-600 mx-auto"
+                    style="transition-delay: 0.1s;">
+                    <h3 class="text-2xl font-bold mb-3 flex items-center text-teal-600">
                         <i data-lucide="dna" class="w-7 h-7 mr-3"></i> Ongoing Scientific Activity
                     </h3>
                     <p class="text-lg font-medium text-gray-800 mb-2">
                         <strong>In vivo</strong> and <strong>In silico Evaluation</strong> of *Haldina cordifolia*'s
                         Impact on Reproductive Hormones in Mice Exposed to Bisphenol A
                     </p>
-                    <p class="text-gray-600 mb-4">
+                    <p class="text-gray-600 mb-4 leading-relaxed">
                         Conducted in the <strong>Pharmacology lab</strong> of Department of Pharmacy,
                         <strong>Jahangirnagar University</strong>. This study combines <strong>wet-lab animal
                             models</strong> (`In vivo`) with <strong>computational drug design techniques</strong> (`In
                         silico`).
                     </p>
-                    <span class="text-sm text-gray-500">Status: <strong>Ongoing</strong></span>
+                    <span class="text-sm text-gray-500">Status: <strong class="text-green-600">Ongoing</strong></span>
                 </div>
 
-                <div class="grid md:grid-cols-2 gap-8 max-w-4xl mx-auto">
-                    <!-- Research Expertise Card (Refined) -->
-                    <div class="fade-in-up p-6 rounded-xl shadow-lg border border-gray-200 bg-white"
+                <div class="grid md:grid-cols-2 gap-8">
+                    <!-- Research Expertise Card -->
+                    <div class="fade-in-up p-6 rounded-xl shadow-lg border border-gray-200 bg-white border-l-4 border-teal-600"
                         style="transition-delay: 0.2s;">
-                        <h3 class="text-xl font-semibold mb-3 flex items-center"
-                            style="color: var(--color-teal-primary);"><i data-lucide="microscope"
+                        <h3 class="text-xl font-bold mb-3 flex items-center text-teal-600"><i data-lucide="microscope"
                                 class="w-6 h-6 mr-3"></i> <strong>Research Expertise</strong></h3>
                         <div class="space-y-4 text-gray-700">
                             <div>
@@ -538,11 +458,11 @@
                         </div>
                     </div>
 
-                    <!-- Documentation Skills Card (Refined) -->
-                    <div class="fade-in-up bg-white p-6 rounded-xl shadow-lg border border-gray-200"
-                        style="transition-delay: 0.3s; border-left-width: 4px; border-color: var(--color-teal-primary);">
-                        <h3 class="text-xl font-semibold mb-3 flex items-center"
-                            style="color: var(--color-teal-primary);"><i data-lucide="library" class="w-6 h-6 mr-3"></i>
+                    <!-- Documentation Skills Card -->
+                    <div class="fade-in-up bg-white p-6 rounded-xl shadow-lg border border-gray-200 border-l-4 border-teal-600"
+                        style="transition-delay: 0.3s;">
+                        <h3 class="text-xl font-bold mb-3 flex items-center text-teal-600"><i data-lucide="library"
+                                class="w-6 h-6 mr-3"></i>
                             <strong>Documentation & Management</strong>
                         </h3>
                         <ul class="list-disc list-inside ml-4 text-gray-700 space-y-3 text-sm">
@@ -552,12 +472,12 @@
                                 <strong>Zotero</strong> for academic citation management.
                             </li>
                         </ul>
-                        <!-- Contact Reference Placeholder remains unchanged in style but placed here -->
+                        <!-- Academic Reference Placeholder -->
                         <div class="mt-6 pt-4 border-t border-gray-200">
-                            <h3 class="text-lg font-semibold text-gray-700 mb-1 flex items-center"><i
-                                    data-lucide="users-2" class="w-5 h-5 mr-2"></i> <strong>Academic Reference</strong>
+                            <h3 class="text-lg font-bold text-gray-700 mb-1 flex items-center"><i data-lucide="users-2"
+                                    class="w-5 h-5 mr-2 text-gray-500"></i> <strong>Academic Reference</strong>
                             </h3>
-                            <p class="text-md font-medium" style="color: var(--color-teal-primary);"><strong>Dr.
+                            <p class="text-md font-bold text-teal-600"><strong>Dr.
                                     Sukalyan Kumar Kundu</strong></p>
                             <p class="text-gray-600 text-sm">Professor, Department of Pharmacy, <strong>Jahangirnagar
                                     University</strong></p>
@@ -574,7 +494,6 @@
     <footer class="bg-gray-800 text-white py-8">
         <div class="max-w-6xl mx-auto px-4 text-center">
             <p class="text-sm">&copy; <span id="year"></span> MD. SHAHARIAR. All rights reserved.</p>
-            <p class="text-xs text-gray-400 mt-2">Built with HTML & Tailwind CSS.</p>
         </div>
     </footer>
 
@@ -587,13 +506,16 @@
         document.getElementById('year').textContent = new Date().getFullYear();
 
         // Mobile Menu Toggle Logic
-        document.getElementById('menu-button').addEventListener('click', () => {
-            document.getElementById('mobile-menu').classList.toggle('hidden');
+        const menuButton = document.getElementById('menu-button');
+        const mobileMenu = document.getElementById('mobile-menu');
+
+        menuButton.addEventListener('click', () => {
+            mobileMenu.classList.toggle('hidden');
         });
 
         function closeMenu() {
-            if (!document.getElementById('mobile-menu').classList.contains('hidden')) {
-                document.getElementById('mobile-menu').classList.add('hidden');
+            if (!mobileMenu.classList.contains('hidden')) {
+                mobileMenu.classList.add('hidden');
             }
         }
 
@@ -642,13 +564,13 @@
             if (!notification) {
                 notification = document.createElement('div');
                 notification.id = 'notification';
-                notification.className = 'fixed bottom-5 right-5 p-4 rounded-lg shadow-xl transition-opacity duration-300 opacity-0 transform translate-y-4 text-white font-medium z-[200]';
+                notification.className = 'fixed bottom-5 right-5 p-4 rounded-xl shadow-xl transition-opacity duration-300 opacity-0 transform translate-y-4 text-white font-medium z-[200]';
                 document.body.appendChild(notification);
             }
 
             notification.textContent = message;
-            // Using hex codes for notification background colors
-            notification.className = `fixed bottom-5 right-5 p-4 rounded-lg shadow-xl transition-all duration-300 text-white font-medium z-[200] ${isError ? 'bg-red-500' : 'bg-green-600'}`;
+            // Use Tailwind classes for colors
+            notification.className = `fixed bottom-5 right-5 p-4 rounded-xl shadow-xl transition-all duration-300 text-white font-medium z-[200] ${isError ? 'bg-red-600' : 'bg-green-600'}`;
 
             // Show
             setTimeout(() => {
@@ -668,7 +590,7 @@
             setupIntersectionObserver();
         };
 
-        // Scroll listener for sticky header glow (optional dynamic shadow)
+        // Scroll listener for sticky header glow
         window.addEventListener('scroll', () => {
             const navbar = document.getElementById('navbar');
             if (window.scrollY > 50) {
